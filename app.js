@@ -60,8 +60,11 @@ app.use(notFoundHandler);
 
 // common error handler
 app.use(errorHandler);
-const url = "mongodb+srv://rifat:rifat12345@cluster0.ltldm.mongodb.net/chatApp?retryWrites=true&w=majority"
 
+const dbUser = process.env.DB_USER
+const dbPass = process.env.DB_PASS
+
+const url = `mongodb+srv://${dbUser}:${dbPass}@cluster0.ltldm.mongodb.net/chatApp?retryWrites=true&w=majority`
 mongoose
     .connect(url, {
         useNewUrlParser: true,
